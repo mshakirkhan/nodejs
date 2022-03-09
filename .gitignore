@@ -1,2 +1,5 @@
 nodejs-crud-api/node_modules
 nodejs-crud-api/.env
+
+nodejs-crud-api-mvc-with-jwt/node_modules
+nodejs-crud-api-mvc-with-jwt/.env
