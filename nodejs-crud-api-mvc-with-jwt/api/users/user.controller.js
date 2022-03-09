@@ -1,4 +1,11 @@
-const { create, get, getUserByEmail } = require("./user.service");
+const { 
+    create, 
+    get, 
+    getUserByEmail, 
+    getUserByID, 
+    updateUser 
+    } = require("./user.service");
+
 require('dotenv').config();
 const { genSaltSync, hashSync, compareSync } = require('bcrypt');
 const { sign } = require('jsonwebtoken');
@@ -69,5 +76,37 @@ module.exports = {
                 })
             }
         });
+    },
+    getSingleUser: (req, res) => {
+        let userID = req.params.id;
+        getUserByID(userID, (err, results) => {
+            if(err) {
+                res.json({
+                    success:0,
+                    message: "Failed" 
+                })
+            } else {
+                res.json({
+                    success:0,
+                    data: results
+                });
+            }
+        })
+    },
+    updateUser: (req, res) => {
+        let body = req.body;
+        updateUser(body, (err, results) => {
+            if(err) {
+                res.json({
+                    success:0,
+                    message:"Failed"
+                })
+            } else {
+                res.json({
+                    success:1,
+                    data: results
+                })
+            }
+        })
     }
 }
